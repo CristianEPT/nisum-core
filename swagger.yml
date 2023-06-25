@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: Swagger Usuarios - Nisum
+  description: |-
+    Esta es la documentación de las API desarrollada para Nisum
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: user
+    externalDocs:
+      description: user management
+      url: http://swagger.io
+paths:
+  /nisum/user:
+    post:
+      tags:
+        - user
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    UserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: cristian
+        email:
+          type: string
+          example: cristian@test.com
+        password:
+          type: string
+          example: Password123@
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneRequest'
+    PhoneRequest:
+      type: object
+      properties:
+        number:
+          type: string
+          example: 3213122332
+        cityCode:
+          type: string
+          example: 1
+        countryCode:
+          type: string
+          example: 57
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: c3b15910-5a55-4503-a2f0-bb0689bb8149
+        created:
+          type: number
+          example: 1687687899346
+        modified:
+          type: number
+          example: 1687687899346
+        lastLogin:
+          type: number
+          example: 1687687899346
+        token:
+          type: string
+          example: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjcmlzdGlhbkB0ZXN0LmNvbSIsImlhdCI6MTY4NzY4Nzg5OSwiZXhwIjoxNjg3ODYwNjk5fQ.dAR5IsY6423IeWnFZXmgUbpAMV2xQ3vLcG9ioT56fMFdA4PIKo6ZdGzyNkjaFfTDcCWEmJUOwXYMMSE1hTQn1Q
+        active:
+          type: boolean
+          example: true
+    ErrorResponse:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          example: 2023-06-25T05:27:30.010283155
+        status:
+          type: string
+          example: 4xx
+        error:
+          type: string
+          example: ErrorName
+        exception:
+          type: string
+          example: class exception
+        message:
+          type: string
+          example: error cause
+        path:
+          type: string
+          example: /nisum/user
