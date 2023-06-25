@@ -71,8 +71,7 @@ o desde postman, de la siguiente manera
 Las configuraciones de la base de datos se encuentran en el archivo `properties.yml`. Asegúrate de proporcionar las
 configuraciones correctas antes de ejecutar la aplicación.
 
-Una vez se ejecute el proyecto la base de datos se va a habilitar y podra acceder de manera grafica porhttp://localhost:
-8080/h2-console
+Una vez se ejecute el proyecto la base de datos se va a habilitar y podra acceder de manera grafica por http://localhost:8080/h2-console
 
 Se le solicitaran credenciales tales como se muestran a continuación
 
